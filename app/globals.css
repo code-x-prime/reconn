@@ -1,0 +1,73 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@theme {
+  --color-forest: #174d32;
+  --color-forest-dark: #10241b;
+  --color-charcoal: #10241b;
+  --color-orange: #ff6a00;
+  --color-red: #f04424;
+  --color-blue: #168be8;
+  --color-purple: #7666e8;
+  --color-olive: #8b8748;
+  --color-off-white: #fafaf7;
+  --color-cream: #f5f1e7;
+  --color-light-grey: #f3f5f2;
+  --color-light-green: #eaf2e9;
+  --color-white: #ffffff;
+  --color-ink: #18251f;
+  --color-muted: #63706a;
+  --color-line: #e2e5e0;
+  --font-heading: var(--font-heading), Arial, sans-serif;
+  --font-body: var(--font-body), Arial, sans-serif;
+}
+
+body {
+  font-family: var(--font-body), Arial, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading), Arial, sans-serif;
+  letter-spacing: -0.045em;
+}
+
+.scroll-smooth-anchor {
+  scroll-behavior: smooth;
+}
+
+.gradient-blue-purple {
+  background: linear-gradient(135deg, #168be8, #7666e8);
+}
+
+.gradient-orange-red {
+  background: linear-gradient(135deg, #ff6a00, #f04424);
+}
+
+.gradient-forest {
+  background: linear-gradient(135deg, #174d32, #3f8a5c);
+}
+
+.text-gradient-blue-purple {
+  background: linear-gradient(135deg, #168be8, #7666e8);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-orange-red {
+  background: linear-gradient(135deg, #ff6a00, #f04424);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
