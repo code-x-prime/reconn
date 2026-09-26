@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { HugeiconsIcon } from '@hugeicons/react'
-import { ArrowRight01Icon } from '@hugeicons/core-free-icons'
+import { ArrowRight01Icon, DropletIcon, TractorIcon, ExpandIcon, Wallet01Icon } from '@hugeicons/core-free-icons'
 import { Button, CategoryCard, HeroImage, ImageReveal, Reveal, SectionTitle } from '@/components/site'
 import { TextRevealByWord } from '@/components/ui/text-reveal'
 import { categories } from '@/data/products'
@@ -25,6 +25,44 @@ const qualityFocusPoints = [
   { title: 'Careful Selection', copy: 'Attention to the ingredients and materials that go into every category.' },
   { title: 'Consistent Standards', copy: 'The same approach applied across every batch and category.' },
   { title: 'Considered Presentation', copy: 'Products presented with care, from packaging to information.' },
+]
+
+const services = [
+  {
+    icon: DropletIcon,
+    title: 'Cold-Pressed Edible Oils',
+    copy: 'Offering mustard (black & yellow), coconut, and groundnut oils with maximum nutrition and natural flavor.',
+  },
+  {
+    icon: TractorIcon,
+    title: 'Direct Farmer Sourcing',
+    copy: 'Partnering with farmers to procure natural ingredients directly, ensuring authenticity, sustainability, and fair pricing.',
+  },
+  {
+    icon: ExpandIcon,
+    title: 'Natural FMCG Expansion',
+    copy: 'Future product portfolio to include natural salts, spices, mineral water, and wellness beverages, catering to evolving consumer needs.',
+  },
+  {
+    icon: Wallet01Icon,
+    title: 'Affordable Health Solutions',
+    copy: 'Delivering high-quality natural products at consumer-friendly prices, making wellness accessible to every household.',
+  },
+]
+
+const team = [
+  {
+    name: 'Anupriya Kumari',
+    role: 'Founder & Director',
+    bio: 'An MBBS student in her final semester with a strong interest in health, nutrition, and wellness-driven FMCG solutions. She brings medical insight and consumer health perspective to product development.',
+    light: true,
+  },
+  {
+    name: 'Aniket Kumar',
+    role: 'Founder & Director',
+    bio: 'A B.Com graduate with a background in commerce and business fundamentals. He contributes expertise in operations, finance, and business strategy for scaling the venture.',
+    light: false,
+  },
 ]
 
 const heroStats = [
@@ -58,7 +96,8 @@ export default function About() {
                 <span className="text-[#4fbf7e]">DRIVEN BY</span> <span className="text-gradient-orange-red">QUALITY.</span>
               </h1>
               <p className="m-0 max-w-[560px] text-[15px] leading-[1.7] text-white/80 sm:text-[18px]">
-                A focused agro and food company built around careful sourcing, consistent processes and clear business conversations.
+                From Farmers to Families, Naturally — a focused agro and food company built around careful sourcing, consistent processes
+                and clear business conversations.
               </p>
             </Reveal>
           </div>
@@ -92,19 +131,122 @@ export default function About() {
             </div>
           </div>
           <Reveal>
-            <span className="text-forest inline-flex items-center gap-2 text-[13px] font-bold tracking-[.16em] uppercase">Our Story</span>
+            <span className="text-forest inline-flex items-center gap-2 text-[13px] font-bold tracking-[.16em] uppercase">Who We Are</span>
             <h2 className="my-6 text-[30px] leading-[1.1] font-extrabold tracking-[-.03em] sm:text-[clamp(34px,3.6vw,50px)]">
-              An agro and food manufacturing company focused on <span className="text-forest">quality products</span>, consistent processes
-              and clear business conversations.
+              A forward-thinking FMCG company on a mission to <span className="text-forest">reconnect people with nature</span> through
+              food.
             </h2>
             <div className="border-orange border-l-[3px] pl-5">
               <p className="text-muted m-0 max-w-[560px] text-[15px] leading-[1.75] sm:text-[17px]">
-                We use a considered approach to agro manufacturing, keeping attention on sourcing, process consistency, hygiene and
-                presentation. We do not make claims beyond the information provided — our focus is building dependable agro products and
-                making it easy for businesses to start a conversation.
+                We are dedicated to creating pure, natural, and health-oriented products that inspire everyday wellness, while staying true
+                to authenticity, sustainability, and transparency.
               </p>
             </div>
           </Reveal>
+        </section>
+
+        {/* WHAT WE DO / OUR FUTURE */}
+        <section className={`${screenH} bg-off-white flex items-center px-5 py-16 sm:px-[7vw] sm:py-20`}>
+          <div className="mx-auto grid w-full max-w-[1400px] grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-[6vw]">
+            <Reveal>
+              <span className="text-forest inline-flex items-center gap-2 text-[13px] font-bold tracking-[.16em] uppercase">
+                What We Do
+              </span>
+              <h3 className="my-5 text-[26px] leading-[1.15] font-extrabold tracking-[-.02em] sm:text-[34px]">
+                Cold-pressed, farmer-sourced, made for everyday households.
+              </h3>
+              <p className="text-muted m-0 max-w-[540px] text-[15px] leading-[1.75] sm:text-[16px]">
+                Our journey began with a premium range of cold-pressed edible oils — mustard (black &amp; yellow), coconut, and groundnut —
+                crafted using traditional extraction methods that preserve natural flavor and nutrition. By sourcing directly from farmers,
+                we ensure fair trade, reduce costs, and make high-quality products accessible and affordable to households.
+              </p>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <span className="text-forest inline-flex items-center gap-2 text-[13px] font-bold tracking-[.16em] uppercase">
+                Our Future
+              </span>
+              <h3 className="my-5 text-[26px] leading-[1.15] font-extrabold tracking-[-.02em] sm:text-[34px]">
+                Building a holistic, natural FMCG portfolio.
+              </h3>
+              <p className="text-muted m-0 max-w-[540px] text-[15px] leading-[1.75] sm:text-[16px]">
+                Looking ahead, we are expanding into natural salts, spices, mineral water, and wellness beverages. Our goal is not just to
+                sell products, but to create a movement around healthy living — making natural, clean-label, and affordable wellness a part
+                of every family&apos;s lifestyle.
+              </p>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* VISION & MISSION */}
+        <section className={`${screenH} bg-charcoal relative flex items-center overflow-hidden px-5 py-16 text-white sm:px-[7vw] sm:py-20`}>
+          <div className="from-blue to-purple pointer-events-none absolute top-[15%] left-[-100px] h-[280px] w-[280px] bg-gradient-to-br opacity-[0.16] blur-[110px]" />
+          <div className="relative mx-auto grid w-full max-w-[1400px] grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-[6vw]">
+            <Reveal>
+              <span className="inline-flex items-center gap-2 text-[13px] font-bold tracking-[.16em] text-[#4fbf7e] uppercase">Vision</span>
+              <h3 className="my-5 text-[28px] leading-[1.15] font-extrabold tracking-[-.02em] sm:text-[38px]">
+                To be a trusted FMCG brand that redefines healthy living.
+              </h3>
+              <p className="m-0 max-w-[480px] text-[15px] leading-[1.75] text-white/75 sm:text-[16px]">
+                Making natural, authentic, and affordable food products accessible to every household.
+              </p>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <span className="text-orange inline-flex items-center gap-2 text-[13px] font-bold tracking-[.16em] uppercase">Mission</span>
+              <h3 className="my-5 text-[28px] leading-[1.15] font-extrabold tracking-[-.02em] sm:text-[38px]">
+                To deliver pure and affordable wellness foods.
+              </h3>
+              <p className="m-0 max-w-[480px] text-[15px] leading-[1.75] text-white/75 sm:text-[16px]">
+                By sourcing directly from farmers, preserving natural nutrition through minimal processing, and making healthy living
+                accessible to every household.
+              </p>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* OUR SERVICES */}
+        <section className={`${screenH} bg-cream flex items-center px-5 py-16 sm:px-[7vw] sm:py-20`}>
+          <div className="mx-auto w-full max-w-[1400px]">
+            <SectionTitle eyebrow="What we offer" title={<>Our services.</>} />
+            <div className="mt-10 grid grid-cols-1 gap-5 sm:mt-14 sm:grid-cols-2 lg:grid-cols-4">
+              {services.map((s, i) => (
+                <Reveal
+                  key={s.title}
+                  delay={i * 0.08}
+                  className="group border-line hover:border-forest relative border bg-white pt-10 pb-7 text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_50px_-20px_rgba(16,36,27,0.25)]"
+                >
+                  <span className="bg-forest group-hover:bg-orange relative mx-auto flex h-16 w-16 items-center justify-center text-white transition-colors duration-500 [clip-path:polygon(25%_5%,75%_5%,100%_50%,75%_95%,25%_95%,0%_50%)]">
+                    <HugeiconsIcon icon={s.icon} size={26} />
+                  </span>
+                  <h3 className="mx-6 mt-6 text-[19px] leading-[1.2] font-extrabold tracking-[-.01em]">{s.title}</h3>
+                  <p className="text-muted mx-6 mt-3 text-[14px] leading-[1.65]">{s.copy}</p>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* OUR TEAM */}
+        <section className={`${screenH} flex items-center bg-white px-5 py-16 sm:px-[7vw] sm:py-20`}>
+          <div className="mx-auto w-full max-w-[1400px]">
+            <SectionTitle eyebrow="The people behind Reconn" title={<>Our team.</>} />
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:mt-14 sm:grid-cols-2">
+              {team.map((member, i) => (
+                <Reveal key={member.name} delay={i * 0.1} className={`p-8 sm:p-10 ${member.light ? 'bg-cream' : 'bg-forest text-white'}`}>
+                  <h3 className="m-0 text-[22px] font-extrabold tracking-[-.01em] sm:text-[26px]">{member.name}</h3>
+                  <p
+                    className={`m-0 mt-1 text-[13px] font-bold tracking-[.08em] uppercase ${member.light ? 'text-forest' : 'text-[#4fbf7e]'}`}
+                  >
+                    {member.role}
+                  </p>
+                  <p
+                    className={`m-0 mt-5 max-w-[440px] text-[14px] leading-[1.75] sm:text-[15px] ${member.light ? 'text-muted' : 'text-white/80'}`}
+                  >
+                    {member.bio}
+                  </p>
+                </Reveal>
+              ))}
+            </div>
+          </div>
         </section>
 
         {/* OUR APPROACH */}

@@ -19,9 +19,8 @@ const aboutImage = '/images/home-about-new.jpg'
 const manufacturingImage = '/images/home-manufacturing-new.jpg'
 
 const aboutParagraphs = [
-  'Reconn Agro India Pvt. Ltd. brings together a focused range of everyday food categories including Ghee, Honey, Edible Oils and Spices.',
-  'Our approach is centred around quality-focused products, careful presentation and consistency across the categories we serve.',
-  'From product selection to the way products are presented to customers and business partners, the focus remains on creating a dependable product experience.',
+  'Reconn Agro India Pvt. Ltd. is a forward-thinking FMCG company with a mission to reconnect people with nature through food.',
+  'We are dedicated to creating pure, natural, and health-oriented products that inspire everyday wellness, while staying true to authenticity, sustainability, and transparency.',
 ]
 
 const aboutLabels = ['Quality Focus', 'Consistent Approach', 'Multiple Product Categories']
@@ -111,13 +110,11 @@ export default function Home() {
             className="h-[360px] sm:h-[480px] lg:h-auto lg:min-h-[520px]"
           />
           <Reveal>
-            <span className="text-forest inline-flex items-center gap-2 text-[13px] font-bold tracking-[.16em] uppercase">
-              About Reconn
-            </span>
+            <span className="text-forest inline-flex items-center gap-2 text-[13px] font-bold tracking-[.16em] uppercase">Who We Are</span>
             <h2 className="my-6 text-[40px] leading-[1.02] font-extrabold tracking-[-.03em] sm:text-[clamp(44px,4.6vw,64px)]">
-              BUILT AROUND
+              FROM FARMERS
               <br />
-              QUALITY.
+              TO FAMILIES, NATURALLY.
             </h2>
             <div className="flex flex-col gap-5">
               {aboutParagraphs.map((p) => (

@@ -429,9 +429,13 @@ export function Footer() {
         <div className="col-span-2 flex flex-col gap-4 sm:col-span-1">
           <p className="m-0 mb-2 text-[11px] font-bold tracking-[.16em] text-white/45 uppercase">Business</p>
           {footerBusiness.map((b) => (
-            <p key={b} className="m-0 text-[14px] text-white/85">
+            <Link
+              key={b}
+              href="/contact"
+              className="hover:text-orange w-fit text-[14px] text-white/85 transition-all duration-300 hover:translate-x-1"
+            >
               {b}
-            </p>
+            </Link>
           ))}
           <Link
             href="/contact"
