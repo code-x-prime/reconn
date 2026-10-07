@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { HugeiconsIcon } from '@hugeicons/react'
 import { Call02Icon, Mail01Icon, Location01Icon } from '@hugeicons/core-free-icons'
 import { ContactForm, Reveal } from '@/components/site'
+import { contactDetails } from '@/data/contact'
 
 export const metadata = {
   title: 'Contact RECONN | Business & Product Enquiries',
@@ -17,11 +18,7 @@ const enquiryTypes = [
   { n: '04', title: 'Dealership', copy: 'Dealership opportunities across regions.' },
 ]
 
-const details = [
-  { icon: Call02Icon, label: 'Business enquiries', value: 'Product, bulk and general' },
-  { icon: Mail01Icon, label: 'Distribution', value: 'Dealership and distribution' },
-  { icon: Location01Icon, label: 'Location', value: 'India' },
-]
+const contactIcons = { phone: Call02Icon, email: Mail01Icon, address: Location01Icon }
 
 const screenH = 'min-h-[calc(100svh-71px)] sm:min-h-[calc(100svh-87px)]'
 
@@ -88,17 +85,21 @@ export default function Contact() {
                 Please share your requirements and our team can follow up with the relevant information.
               </p>
               <div className="mt-10 flex flex-col gap-3">
-                {details.map((d) => (
+                {contactDetails.map((d) => (
                   <div
                     key={d.label}
                     className="group flex items-center gap-4 border border-white/15 bg-white/[0.04] p-4 transition-all duration-300 hover:border-white/35 hover:bg-white/[0.08] sm:p-5"
                   >
                     <span className="bg-forest group-hover:bg-orange flex h-12 w-12 flex-none items-center justify-center text-white transition-colors duration-300">
-                      <HugeiconsIcon icon={d.icon} size={20} />
+                      <HugeiconsIcon icon={contactIcons[d.kind]} size={20} />
                     </span>
-                    <span>
+                    <span className="min-w-0">
                       <span className="block text-[11px] font-bold tracking-[.14em] text-white/55 uppercase">{d.label}</span>
-                      <span className="mt-1 block text-[16px] font-bold sm:text-[18px]">{d.value}</span>
+                      {'href' in d ? (
+                        <a href={d.href} className="hover:text-orange mt-1 block text-[16px] font-bold break-words transition-colors sm:text-[18px]">{d.value}</a>
+                      ) : (
+                        <span className="mt-1 block text-[16px] font-bold sm:text-[18px]">{d.value}</span>
+                      )}
                     </span>
                   </div>
                 ))}

@@ -22,6 +22,9 @@ import {
   PepperIcon,
 } from '@hugeicons/core-free-icons'
 import { categories, imageSizes, Product, products, productHref } from '@/data/products'
+import { contactDetails } from '@/data/contact'
+
+const contactIcons = { phone: Call02Icon, email: Mail01Icon, address: Location01Icon }
 
 const categoryIcons: Record<string, typeof JarIcon> = {
   ghee: JarIcon,
@@ -389,10 +392,21 @@ export function Footer() {
           <p className="m-0 mt-6 max-w-[340px] text-[14px] leading-[1.75] text-white/65">
             Quality-focused agro and food products across Ghee, Honey, Edible Oils and Spices.
           </p>
-          <div className="mt-6 flex items-center gap-3 text-[12px] font-bold tracking-[.12em] text-white/70 uppercase">
-            <HugeiconsIcon icon={Location01Icon} size={18} className="text-orange" />
-            India
-          </div>
+          <address className="mt-6 flex flex-col gap-4 text-[13px] leading-[1.7] text-white/70 not-italic">
+            {contactDetails.map((detail) => (
+              <div key={detail.label} className="flex items-start gap-3">
+                <HugeiconsIcon icon={contactIcons[detail.kind]} size={18} className="text-orange mt-1 flex-none" />
+                <div className="min-w-0">
+                  <span className="block text-[11px] font-bold tracking-[.1em] text-white/45 uppercase">{detail.label}</span>
+                  {'href' in detail ? (
+                    <a href={detail.href} className="hover:text-orange break-words transition-colors">{detail.value}</a>
+                  ) : (
+                    <span>{detail.value}</span>
+                  )}
+                </div>
+              </div>
+            ))}
+          </address>
         </div>
 
         <div className="flex flex-col gap-4">
@@ -753,30 +767,20 @@ export function ProductFilters() {
 export function ContactDetails() {
   return (
     <div className="mt-[35px] flex flex-col gap-[22px] sm:mt-[55px]">
-      <div className="text-forest flex items-start gap-[14px]">
-        <HugeiconsIcon icon={Call02Icon} size={18} />
-        <span className="text-muted text-xs leading-[1.6]">
-          Business enquiries
-          <br />
-          <b className="text-ink text-[13px]">Product, bulk and general</b>
-        </span>
-      </div>
-      <div className="text-forest flex items-start gap-[14px]">
-        <HugeiconsIcon icon={Mail01Icon} size={18} />
-        <span className="text-muted text-xs leading-[1.6]">
-          Distribution
-          <br />
-          <b className="text-ink text-[13px]">Dealership and distribution</b>
-        </span>
-      </div>
-      <div className="text-forest flex items-start gap-[14px]">
-        <HugeiconsIcon icon={Location01Icon} size={18} />
-        <span className="text-muted text-xs leading-[1.6]">
-          Location
-          <br />
-          <b className="text-ink text-[13px]">India</b>
-        </span>
-      </div>
+      {contactDetails.map((detail) => (
+        <div key={detail.label} className="text-forest flex items-start gap-[14px]">
+          <HugeiconsIcon icon={contactIcons[detail.kind]} size={18} className="flex-none" />
+          <span className="text-muted min-w-0 text-xs leading-[1.6]">
+            {detail.label}
+            <br />
+            {'href' in detail ? (
+              <a href={detail.href} className="text-ink text-[13px] font-bold break-words">{detail.value}</a>
+            ) : (
+              <b className="text-ink text-[13px]">{detail.value}</b>
+            )}
+          </span>
+        </div>
+      ))}
     </div>
   )
 }
