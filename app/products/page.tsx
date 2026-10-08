@@ -3,7 +3,7 @@ import { Button, Reveal, SectionTitle } from '@/components/site'
 
 export const metadata = {
   title: 'RECONN Products | Ghee, Honey, Edible Oils & Spices',
-  description: 'Explore the Reconn Agro India Pvt. Ltd. product range across Ghee, Honey, Edible Oils and Spices.',
+  description: 'Explore the Reconn Agro India Pvt. Ltd. range: Bilona Ghee, Organic Honey, Forest Honey and cold press oils.',
 }
 
 const screenH = 'min-h-[calc(100svh-71px)] sm:min-h-[calc(100svh-87px)]'

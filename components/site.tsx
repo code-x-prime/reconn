@@ -21,7 +21,7 @@ import {
   DropletIcon,
   PepperIcon,
 } from '@hugeicons/core-free-icons'
-import { categories, imageSizes, Product, products, productHref } from '@/data/products'
+import { categories, categoryCopy, imageSizes, Product, products, productHref } from '@/data/products'
 import { contactDetails } from '@/data/contact'
 
 const contactIcons = { phone: Call02Icon, email: Mail01Icon, address: Location01Icon }
@@ -92,6 +92,32 @@ export function ImageReveal({
     >
       <Image src={src} alt={alt} fill sizes={sizes} className="object-cover" />
     </motion.div>
+  )
+}
+
+/**
+ * Product shots are square with the pack centred. In wide or tall boxes `object-cover` would crop the pack and
+ * `object-contain` would leave empty bars, so show the whole shot and fill the rest with a blurred copy of itself.
+ * The parent must be `relative overflow-hidden`.
+ */
+export function FitImage({
+  src,
+  alt,
+  sizes,
+  className = '',
+  priority = false,
+}: {
+  src: string
+  alt: string
+  sizes: string
+  className?: string
+  priority?: boolean
+}) {
+  return (
+    <>
+      <Image src={src} alt="" aria-hidden fill sizes="25vw" className="scale-125 object-cover opacity-90 blur-2xl saturate-125" />
+      <Image src={src} alt={alt} fill sizes={sizes} priority={priority} className={`object-contain ${className}`} />
+    </>
   )
 }
 
@@ -209,25 +235,31 @@ export function Header() {
                           key={c.slug}
                           href={`/products/${c.slug}`}
                           onClick={() => setProductsOpen(false)}
-                          className="group bg-charcoal relative flex h-[110px] items-end overflow-hidden p-4 text-white"
+                          className="group border-line hover:border-forest bg-off-white relative flex h-[128px] overflow-hidden border transition-colors duration-300"
                         >
-                          <Image
-                            src={c.image}
-                            alt={c.name}
-                            fill
-                            sizes="280px"
-                            className="object-cover transition-transform duration-700 group-hover:scale-110"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
-                          <span className="absolute top-3 right-3 text-[11px] font-extrabold tracking-[.14em] text-white/80">
-                            {c.number}
+                          <span className="flex min-w-0 flex-1 flex-col justify-between p-3.5">
+                            <span
+                              className="text-[11px] font-extrabold tracking-[.14em] text-[var(--a)]"
+                              style={{ ['--a' as string]: categoryCopy[c.slug].accentHex }}
+                            >
+                              {c.number}
+                            </span>
+                            <span className="text-ink flex items-center gap-2 text-[15px] leading-[1.15] font-extrabold tracking-[-.01em]">
+                              {c.name}
+                              <HugeiconsIcon
+                                icon={ArrowRight01Icon}
+                                size={15}
+                                className="flex-none transition-transform duration-300 group-hover:translate-x-1"
+                              />
+                            </span>
                           </span>
-                          <span className="relative flex w-full items-center justify-between text-[15px] font-extrabold tracking-[-.01em]">
-                            {c.name}
-                            <HugeiconsIcon
-                              icon={ArrowRight01Icon}
-                              size={16}
-                              className="transition-transform duration-300 group-hover:translate-x-1"
+                          <span className="relative aspect-square h-full flex-none overflow-hidden">
+                            <Image
+                              src={c.image}
+                              alt={`${c.name} product`}
+                              fill
+                              sizes="128px"
+                              className="object-cover transition-transform duration-700 group-hover:scale-105"
                             />
                           </span>
                           <span className="bg-orange absolute bottom-0 left-0 h-[3px] w-0 transition-[width] duration-500 group-hover:w-full" />
@@ -387,9 +419,10 @@ export function Footer() {
       <div className="relative mx-auto grid max-w-[1400px] grid-cols-2 gap-x-6 gap-y-12 px-5 py-14 sm:px-[7vw] sm:py-20 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:gap-[4vw]">
         <div className="col-span-2 lg:col-span-1">
           <div className="relative h-[60px] w-[190px] sm:h-[70px] sm:w-[220px]">
-            <Image src="/reconn-logo.png" alt="Reconn Agro India Pvt. Ltd." fill className="bg-white object-contain p-2" />
+            <Image src="/reconn-logo.png" alt="Reconn Agro India Pvt. Ltd." fill sizes="220px" className="bg-white object-contain p-2" />
           </div>
-          <p className="m-0 mt-6 max-w-[340px] text-[14px] leading-[1.75] text-white/65">
+          <p className="m-0 mt-6 text-[13px] font-extrabold tracking-[.14em] text-white uppercase">Reconn Agro India Pvt. Ltd.</p>
+          <p className="m-0 mt-3 max-w-[340px] text-[14px] leading-[1.75] text-white/65">
             Quality-focused agro and food products across Ghee, Honey, Edible Oils and Spices.
           </p>
           <address className="mt-6 flex flex-col gap-4 text-[13px] leading-[1.7] text-white/70 not-italic">
@@ -399,7 +432,9 @@ export function Footer() {
                 <div className="min-w-0">
                   <span className="block text-[11px] font-bold tracking-[.1em] text-white/45 uppercase">{detail.label}</span>
                   {'href' in detail ? (
-                    <a href={detail.href} className="hover:text-orange break-words transition-colors">{detail.value}</a>
+                    <a href={detail.href} className="hover:text-orange break-words transition-colors">
+                      {detail.value}
+                    </a>
                   ) : (
                     <span>{detail.value}</span>
                   )}
@@ -464,7 +499,7 @@ export function Footer() {
       <div className="relative select-none">
         <p
           aria-hidden
-          className="m-0 px-2 text-center text-[clamp(64px,19vw,300px)] leading-[0.8] font-extrabold tracking-[-.05em] text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.14)]"
+          className="m-0 px-2 text-center text-[clamp(64px,19vw,300px)] leading-[0.8] font-extrabold tracking-[-.05em] text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.3)]"
         >
           RECONN
         </p>
@@ -544,12 +579,11 @@ export function CategoryCard({ category, className = '' }: { category: (typeof c
       className={`group relative overflow-hidden text-white ${className}`}
     >
       <Link href={`/products/${category.slug}`} className="block h-full">
-        <Image
+        <FitImage
           src={category.image}
           alt={`${category.name} agro category`}
-          fill
           sizes={imageSizes}
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+          className="transition-transform duration-700 ease-out group-hover:scale-[1.05]"
         />
         <div className="from-charcoal/95 absolute inset-0 bg-gradient-to-t via-black/10 to-transparent" />
         <div
@@ -577,7 +611,7 @@ export function CategoryCard({ category, className = '' }: { category: (typeof c
 export function ProductCard({ product }: { product: Product }) {
   return (
     <article className="border-line group border bg-white transition-shadow duration-300 hover:shadow-[0_20px_45px_#0a382314]">
-      <Link href={productHref(product)} className="bg-light-green relative block h-[280px] overflow-hidden sm:h-[320px]">
+      <Link href={productHref(product)} className="bg-off-white relative block aspect-square overflow-hidden">
         <Image
           src={product.image}
           alt={product.name}
@@ -774,7 +808,9 @@ export function ContactDetails() {
             {detail.label}
             <br />
             {'href' in detail ? (
-              <a href={detail.href} className="text-ink text-[13px] font-bold break-words">{detail.value}</a>
+              <a href={detail.href} className="text-ink text-[13px] font-bold break-words">
+                {detail.value}
+              </a>
             ) : (
               <b className="text-ink text-[13px]">{detail.value}</b>
             )}

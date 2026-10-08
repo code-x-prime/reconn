@@ -8,11 +8,11 @@ import { categories } from '@/data/products'
 
 export const metadata = {
   title: 'About RECONN | Agro India Pvt. Ltd.',
-  description: 'Learn about Reconn Agro India Pvt. Ltd.’s quality-focused approach to agro manufacturing and everyday product categories.',
+  description: 'Learn about Reconn Agro India Pvt. Ltd.’s approach to food, sourcing and everyday product categories.',
 }
 
-const heroImage = '/images/about-hero.jpg'
-const visualImage = '/images/about-visual.jpg'
+const heroImage = '/images/reconn/about-hero.webp'
+const visualImage = '/images/reconn/about-story.webp'
 
 const approachPoints = [
   { n: '01', title: 'Quality', copy: 'Careful attention from sourcing to finished product.' },
@@ -79,7 +79,11 @@ export default function About() {
       <main className="overflow-x-clip">
         {/* ABOUT HERO */}
         <section className="bg-charcoal relative flex h-[calc(100svh-71px)] flex-col justify-end overflow-hidden text-white sm:h-[calc(100svh-87px)]">
-          <HeroImage src={heroImage} alt="Agriculture and food manufacturing" />
+          <HeroImage
+            src={heroImage}
+            alt="Indian farmer holding mustard seeds in a flowering mustard field"
+            className="[&_img]:object-[82%_center] sm:[&_img]:object-center"
+          />
           <div className="absolute inset-0 bg-[linear-gradient(100deg,#10241bf2_0%,#10241bb3_50%,#10241b55_100%)]" />
           <div className="from-orange to-red pointer-events-none absolute top-[10%] right-[-80px] h-[300px] w-[300px] bg-gradient-to-br opacity-[0.18] blur-[110px]" />
           <div className="relative z-[2] mx-auto flex w-full max-w-[1400px] flex-1 flex-col justify-center px-5 sm:px-[7vw]">
@@ -121,9 +125,9 @@ export default function About() {
             <div className="border-forest pointer-events-none absolute -right-3 -bottom-3 h-full w-full border-2 sm:-right-5 sm:-bottom-5" />
             <ImageReveal
               src={visualImage}
-              alt="Agro sourcing and manufacturing"
+              alt="Traditional wooden kachchi ghani pressing fresh mustard oil"
               sizes="45vw"
-              className="relative h-[340px] sm:h-[460px] lg:h-[520px]"
+              className="relative aspect-[5/4] w-full sm:aspect-[4/3]"
             />
             <div className="bg-forest absolute top-0 left-0 z-10 px-5 py-4 text-white">
               <p className="m-0 text-[11px] font-bold tracking-[.16em] uppercase">Field</p>

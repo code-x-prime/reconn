@@ -15,7 +15,7 @@ export const metadata = {
 }
 
 const heroImage = '/images/home-hero-new.png'
-const aboutImage = '/images/home-about-new.jpg'
+const aboutImage = '/images/reconn/home-who.webp'
 const manufacturingImage = '/images/home-manufacturing-new.jpg'
 
 const aboutParagraphs = [
@@ -76,8 +76,8 @@ export default function Home() {
                 <span className="text-gradient-orange-red">PRODUCT.</span>
               </h1>
               <p className="mb-6 max-w-[600px] text-[14px] leading-[1.6] text-white/80 sm:mb-8 sm:text-[17px] sm:leading-[1.7] lg:text-[clamp(15px,2.3vh,19px)]">
-                Reconn Agro India Pvt. Ltd. brings together quality-focused food categories including Ghee, Honey, Edible Oils and Spices,
-                with an approach centred around consistency, care and everyday use.
+                Reconn brings together quality-focused food categories including Ghee, Honey, Edible Oils and Spices, with an approach
+                centred around consistency, care and everyday use.
               </p>
               <div className="flex flex-row items-stretch gap-3 sm:items-center sm:gap-4 [&_a]:flex-1 [&_a]:justify-center sm:[&_a]:flex-none">
                 <Button href="/products" large>
@@ -105,9 +105,9 @@ export default function Home() {
         <section className="mx-auto grid min-h-[calc(100svh-71px)] max-w-[1400px] grid-cols-1 content-center items-center gap-12 px-5 py-14 sm:min-h-[calc(100svh-87px)] sm:px-[7vw] sm:py-28 lg:grid-cols-[1.1fr_1fr] lg:gap-[6vw] lg:py-[140px]">
           <ImageReveal
             src={aboutImage}
-            alt="Premium agricultural ingredients"
+            alt="A mother and daughter at a sunlit kitchen table with Reconn ghee, honey and mustard oil, farm fields outside the window"
             sizes="55vw"
-            className="h-[360px] sm:h-[480px] lg:h-auto lg:min-h-[520px]"
+            className="mx-auto aspect-[4/5] w-full max-w-[520px] lg:mx-0 lg:aspect-auto lg:min-h-[560px] lg:max-w-none lg:self-stretch"
           />
           <Reveal>
             <span className="text-forest inline-flex items-center gap-2 text-[13px] font-bold tracking-[.16em] uppercase">Who We Are</span>
@@ -171,7 +171,7 @@ export default function Home() {
             src={manufacturingImage}
             alt="Modern food processing and quality control"
             sizes="50vw"
-            className="h-[360px] sm:h-[480px] lg:h-auto lg:min-h-[540px]"
+            className="mx-auto aspect-[4/5] w-full max-w-[520px] lg:mx-0 lg:aspect-auto lg:min-h-[560px] lg:max-w-none lg:self-stretch"
           />
           <Reveal>
             <span className="text-forest inline-flex items-center gap-2 text-[13px] font-bold tracking-[.16em] uppercase">

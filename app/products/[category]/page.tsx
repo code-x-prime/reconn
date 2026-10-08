@@ -3,8 +3,8 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { HugeiconsIcon } from '@hugeicons/react'
 import { ArrowRight01Icon } from '@hugeicons/core-free-icons'
-import { Button, Reveal, SectionTitle } from '@/components/site'
-import { categories, categoryCopy, getCategoryProducts, productHref } from '@/data/products'
+import { Button, FitImage, ProductCard, Reveal, SectionTitle } from '@/components/site'
+import { categories, categoryCopy, getCategoryProducts } from '@/data/products'
 
 const screenH = 'min-h-[calc(100svh-71px)] sm:min-h-[calc(100svh-87px)]'
 
@@ -32,12 +32,10 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
       <main className="overflow-x-clip" style={vars}>
         {/* HERO */}
         <section className={`${screenH} bg-charcoal relative flex flex-col justify-end overflow-hidden text-white`}>
-          <Image src={copy.productImage} alt={`${data.name} product`} fill priority sizes="100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-[linear-gradient(100deg,#10241bf2_0%,#10241bb0_45%,#10241b33_100%)]" />
           <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#10241b] to-transparent" />
           <div className="pointer-events-none absolute top-[6%] right-[-80px] h-[320px] w-[320px] bg-[var(--accent)] opacity-[0.25] blur-[120px]" />
 
-          <div className="relative z-[2] mx-auto flex w-full max-w-[1400px] flex-1 flex-col justify-center px-5 pt-10 sm:px-[7vw]">
+          <div className="relative z-[2] mx-auto grid w-full max-w-[1400px] flex-1 grid-cols-1 items-center gap-8 px-5 py-10 sm:px-[7vw] lg:grid-cols-2 lg:gap-12">
             <Reveal>
               <span className="inline-flex items-center gap-3 border border-white/25 bg-white/10 px-4 py-2 text-[11px] font-bold tracking-[.16em] text-white/85 uppercase backdrop-blur-md sm:text-[12px]">
                 <span className="h-2 w-2 animate-pulse bg-[var(--accent)]" />
@@ -55,6 +53,16 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                   View Products
                 </Button>
               </div>
+            </Reveal>
+            <Reveal className="bg-off-white relative mx-auto aspect-square w-full max-w-[560px] overflow-hidden lg:max-w-none">
+              <Image
+                src={copy.productImage}
+                alt={`Reconn ${data.name}`}
+                fill
+                preload
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                className="object-cover"
+              />
             </Reveal>
           </div>
 
@@ -140,35 +148,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
             <div className="mt-10 grid grid-cols-1 gap-5 sm:mt-14 sm:grid-cols-2 lg:grid-cols-3">
               {items.map((p, i) => (
                 <Reveal key={p.slug} delay={i * 0.08}>
-                  <Link
-                    href={productHref(p)}
-                    className="group bg-charcoal relative block h-[380px] overflow-hidden text-white sm:h-[440px]"
-                  >
-                    <Image
-                      src={p.image}
-                      alt={p.name}
-                      fill
-                      sizes="(max-width:640px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.08]"
-                    />
-                    <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_30%,#10241bf2_100%)]" />
-                    <div className="absolute top-0 left-0 h-[5px] w-24 bg-[var(--accent)] transition-[width] duration-500 group-hover:w-full" />
-                    <span className="absolute top-5 left-5 border border-white/30 bg-white/10 px-3 py-1.5 text-[11px] font-bold tracking-[.14em] uppercase backdrop-blur-md">
-                      {p.category}
-                    </span>
-                    <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
-                      <h3 className="m-0 text-[26px] leading-[1.05] font-extrabold tracking-[-.02em] sm:text-[30px]">{p.name}</h3>
-                      <p className="m-0 mt-2 text-[14px] leading-[1.6] text-white/75 sm:text-[15px]">{p.description}</p>
-                      <span className="mt-5 inline-flex items-center gap-2 text-[12px] font-bold tracking-[.06em] text-[var(--accent)] uppercase">
-                        View Product
-                        <HugeiconsIcon
-                          icon={ArrowRight01Icon}
-                          size={16}
-                          className="transition-transform duration-300 group-hover:translate-x-1"
-                        />
-                      </span>
-                    </div>
-                  </Link>
+                  <ProductCard product={p} />
                 </Reveal>
               ))}
             </div>
@@ -185,12 +165,11 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                 href={`/products/${c.slug}`}
                 className="group bg-charcoal relative flex h-[240px] items-end overflow-hidden p-6 sm:h-[300px]"
               >
-                <Image
+                <FitImage
                   src={c.image}
                   alt={c.name}
-                  fill
-                  sizes="33vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.08]"
+                  sizes="(max-width:640px) 100vw, 33vw"
+                  className="transition-transform duration-700 group-hover:scale-[1.08]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
                 <span className="absolute top-5 right-5 text-[56px] leading-none font-extrabold text-transparent [-webkit-text-stroke:1.5px_rgba(255,255,255,0.6)]">

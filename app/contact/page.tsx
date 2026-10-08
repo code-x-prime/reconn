@@ -6,10 +6,10 @@ import { contactDetails } from '@/data/contact'
 
 export const metadata = {
   title: 'Contact RECONN | Business & Product Enquiries',
-  description: 'Contact Reconn Agro India Pvt. Ltd. for product, bulk supply, distribution, dealership and general business enquiries.',
+  description: 'Contact the team at Reconn Agro India Pvt. Ltd. for product, bulk supply, distribution and dealership enquiries.',
 }
 
-const heroImage = '/images/contact-hero.jpg'
+const heroImage = '/images/reconn/contact-hero.webp'
 
 const enquiryTypes = [
   { n: '01', title: 'Business Enquiries', copy: 'General business and partnership conversations.' },
@@ -28,8 +28,16 @@ export default function Contact() {
       <main className="overflow-x-clip">
         {/* HERO */}
         <section className={`${screenH} bg-charcoal relative flex flex-col justify-end overflow-hidden text-white`}>
-          <Image src={heroImage} alt="Reconn business and manufacturing" fill priority sizes="100vw" className="object-cover opacity-45" />
-          <div className="absolute inset-0 bg-[linear-gradient(100deg,#10241bf2_0%,#10241bb3_55%,#10241b66_100%)]" />
+          <Image
+            src={heroImage}
+            alt="Reconn ghee, honey and mustard oil on a sunlit table overlooking farmland"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[75%_center] sm:object-center"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(100deg,#10241bf0_0%,#10241bb0_42%,#10241b40_100%)]" />
+          <div className="absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-[#10241b] via-[#10241b]/70 to-transparent" />
           <div className="from-orange to-red pointer-events-none absolute top-[8%] right-[-80px] h-[320px] w-[320px] bg-gradient-to-br opacity-[0.2] blur-[110px]" />
           <div className="from-blue to-purple pointer-events-none absolute bottom-[20%] left-[-80px] h-[260px] w-[260px] bg-gradient-to-br opacity-[0.14] blur-[110px]" />
 
@@ -96,7 +104,12 @@ export default function Contact() {
                     <span className="min-w-0">
                       <span className="block text-[11px] font-bold tracking-[.14em] text-white/55 uppercase">{d.label}</span>
                       {'href' in d ? (
-                        <a href={d.href} className="hover:text-orange mt-1 block text-[16px] font-bold break-words transition-colors sm:text-[18px]">{d.value}</a>
+                        <a
+                          href={d.href}
+                          className="hover:text-orange mt-1 block text-[16px] font-bold break-words transition-colors sm:text-[18px]"
+                        >
+                          {d.value}
+                        </a>
                       ) : (
                         <span className="mt-1 block text-[16px] font-bold sm:text-[18px]">{d.value}</span>
                       )}

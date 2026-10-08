@@ -22,20 +22,21 @@ function StackCard({ c, i, total }: { c: Category; i: number; total: number }) {
     <div ref={ref} className="sticky pb-4 sm:pb-6" style={{ top: `${88 + i * 18}px`, ['--accent' as string]: hex }}>
       <motion.article
         style={{ scale, transformOrigin: 'top center' }}
-        className="group bg-charcoal relative isolate h-[480px] overflow-hidden text-white shadow-[0_30px_70px_-30px_rgba(16,36,27,0.65)] sm:h-[560px]"
+        className="group bg-charcoal relative isolate overflow-hidden text-white shadow-[0_30px_70px_-30px_rgba(16,36,27,0.65)]"
       >
-        <Image
-          src={c.image}
-          alt={`${c.name} product`}
-          fill
-          sizes="(min-width:1024px) 55vw, 100vw"
-          className="-z-10 object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.06]"
-        />
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(16,36,27,0.4)_0%,rgba(16,36,27,0.05)_35%,rgba(16,36,27,0.9)_100%)]" />
+        <div className="bg-off-white relative aspect-square">
+          <Image
+            src={c.image}
+            alt={`Reconn ${c.name}`}
+            fill
+            sizes="(min-width:1024px) 55vw, 100vw"
+            className="object-contain transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+          />
+        </div>
         <div className="absolute top-0 left-0 h-[5px] w-28 bg-[var(--accent)] transition-[width] duration-500 group-hover:w-full" />
 
         <div className="absolute inset-x-0 top-0 flex items-start justify-between p-5 sm:p-8">
-          <span className="border border-white/30 bg-white/10 px-4 py-2 text-[12px] font-bold tracking-[.16em] uppercase backdrop-blur-md">
+          <span className="bg-charcoal/70 border border-white/30 px-4 py-2 text-[12px] font-bold tracking-[.16em] uppercase backdrop-blur-md">
             {c.number} / 0{total}
           </span>
           <span
@@ -46,8 +47,8 @@ function StackCard({ c, i, total }: { c: Category; i: number; total: number }) {
           </span>
         </div>
 
-        <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6">
-          <div className="border border-white/20 bg-white/10 p-5 backdrop-blur-xl sm:p-7">
+        <div className="p-4 sm:p-6">
+          <div className="p-2 sm:p-4">
             <h3 className="m-0 text-[34px] leading-none font-extrabold tracking-[-.03em] sm:text-[48px]">{c.name}</h3>
             <p className="m-0 mt-3 max-w-[460px] text-[14px] leading-[1.6] text-white/80 sm:text-[16px]">{c.description}</p>
             <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">

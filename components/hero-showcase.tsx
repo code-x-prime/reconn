@@ -18,19 +18,17 @@ function Tile({ c, className = '' }: { c: Cat; className?: string }) {
   return (
     <Link
       href={`/products/${c.slug}`}
-      className={`group bg-charcoal relative block overflow-hidden rounded-[22px] border border-white/25 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.6)] ${className}`}
+      className={`group bg-charcoal relative block overflow-hidden border border-white/25 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.6)] ${className}`}
     >
       <Image
         src={c.image}
         alt={`${c.name} product`}
         fill
-        sizes="240px"
-        className="object-cover transition-transform duration-700 group-hover:scale-110"
+        sizes="(min-width:1024px) 260px, 25vw"
+        className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-      <span className="absolute top-3 left-3 rounded-full bg-white/15 px-2.5 py-1 text-[11px] font-bold text-white backdrop-blur-md">
-        {c.number}
-      </span>
+      <span className="absolute top-3 left-3 bg-white/15 px-2.5 py-1 text-[11px] font-bold text-white backdrop-blur-md">{c.number}</span>
       <span className="absolute inset-x-3 bottom-3 text-[15px] font-extrabold tracking-[-.01em] text-white">{c.name}</span>
     </Link>
   )
@@ -64,7 +62,7 @@ export function HeroShowcase({ categories }: { categories: Cat[] }) {
           )
         })}
         <motion.div
-          className="absolute top-[42%] left-[38%] z-10 rounded-2xl border border-white/25 bg-white/15 px-5 py-4 text-white backdrop-blur-xl"
+          className="absolute top-[42%] left-[38%] z-10 border border-white/25 bg-white/15 px-5 py-4 text-white backdrop-blur-xl"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 1.1 }}

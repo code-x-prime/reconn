@@ -7,6 +7,13 @@ export function generateStaticParams() {
   return products.map((p) => ({ category: categorySlug(p.category), slug: p.slug }))
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ category: string; slug: string }> }) {
+  const { category, slug } = await params
+  const product = getProduct(slug)
+  if (!product || categorySlug(product.category) !== category) return {}
+  return { title: `${product.name} | Reconn`, description: product.description }
+}
+
 export default async function ProductDetail({ params }: { params: Promise<{ category: string; slug: string }> }) {
   const { category, slug } = await params
   const product = getProduct(slug)
@@ -17,8 +24,15 @@ export default async function ProductDetail({ params }: { params: Promise<{ cate
     <>
       <main>
         <section className="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-12 px-5 py-16 sm:px-[7vw] sm:py-24 lg:grid-cols-2 lg:gap-[7vw]">
-          <div className="bg-light-green relative h-[360px] sm:h-[460px] lg:h-[560px]">
-            <Image src={product.image} alt={product.name} fill priority sizes="50vw" className="object-cover" />
+          <div className="bg-off-white relative mx-auto aspect-square w-full max-w-[620px] overflow-hidden lg:max-w-none">
+            <Image
+              src={product.image}
+              alt={`Reconn ${product.name}`}
+              fill
+              preload
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
           </div>
           <div>
             <span className="text-forest inline-flex items-center gap-2 text-[13px] font-bold tracking-[.16em] uppercase">
