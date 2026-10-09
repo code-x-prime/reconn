@@ -565,6 +565,17 @@ export function Footer() {
         <div className="mx-auto flex max-w-[1400px] flex-col justify-between gap-2 text-[11px] tracking-[.08em] text-white/50 uppercase sm:flex-row">
           <span>© 2026 Reconn Agro India Pvt. Ltd. All Rights Reserved.</span>
           <span>Agriculture. Manufacturing. Quality.</span>
+          <span>
+            Design by{' '}
+            <a
+              href="https://groxmedia.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-orange font-bold text-white/80 transition-colors duration-300"
+            >
+              Grox Media
+            </a>
+          </span>
         </div>
       </div>
     </footer>
