@@ -2,7 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { Manrope, DM_Sans } from 'next/font/google'
-import { Footer, Header } from '@/components/site'
+import { Footer, Header, WhatsAppFloat } from '@/components/site'
 import { ScrollToTop } from '@/components/scroll-to-top'
 
 const manrope = Manrope({ subsets: ['latin'], variable: '--font-heading' })
@@ -48,6 +48,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <WhatsAppFloat />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

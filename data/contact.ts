@@ -22,3 +22,13 @@ export const contactDetails = [
     value: 'P-09 Ishwarganj, Baikunthpur Road Bithoor, Kanpur - 209217, India',
   },
 ] as const
+
+/** WhatsApp chat: number in international format without "+" (India: 91 + 10 digits). */
+export const whatsapp = {
+  number: '918130787699',
+  display: '8130787699',
+  message: 'Hello Reconn Agro India, I would like to know more about your products.',
+  get href() {
+    return `https://wa.me/${this.number}?text=${encodeURIComponent(this.message)}`
+  },
+}

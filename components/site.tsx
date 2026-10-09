@@ -22,7 +22,7 @@ import {
   PepperIcon,
 } from '@hugeicons/core-free-icons'
 import { categories, categoryCopy, imageSizes, Product, products, productHref } from '@/data/products'
-import { contactDetails } from '@/data/contact'
+import { contactDetails, whatsapp } from '@/data/contact'
 
 const contactIcons = { phone: Call02Icon, email: Mail01Icon, address: Location01Icon }
 
@@ -288,26 +288,55 @@ export function Header() {
           )}
         </nav>
 
-        <Link
-          href="/contact"
-          className="bg-forest hover:bg-orange group hidden flex-none items-center justify-center gap-3 px-[22px] py-4 text-[11px] font-bold tracking-[.12em] text-white uppercase transition-colors duration-300 min-[900px]:inline-flex"
-        >
-          Business Enquiry
-          <HugeiconsIcon
-            icon={ArrowUpRight01Icon}
-            size={15}
-            className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-          />
-        </Link>
+        <div className="hidden flex-none items-center gap-3 min-[900px]:flex">
+          <a
+            href={whatsapp.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Chat on WhatsApp ${whatsapp.display}`}
+            className="border-line group text-ink flex items-center gap-2.5 border bg-white px-4 py-[11px] text-[11px] font-bold tracking-[.12em] uppercase transition-colors duration-300 hover:border-[#25D366]"
+          >
+            <Image
+              src="/whatsapp.png"
+              alt=""
+              width={24}
+              height={24}
+              className="h-6 w-6 transition-transform duration-300 group-hover:scale-110"
+            />
+            WhatsApp
+          </a>
+          <Link
+            href="/contact"
+            className="bg-forest hover:bg-orange group flex flex-none items-center justify-center gap-3 px-[22px] py-4 text-[11px] font-bold tracking-[.12em] text-white uppercase transition-colors duration-300"
+          >
+            Business Enquiry
+            <HugeiconsIcon
+              icon={ArrowUpRight01Icon}
+              size={15}
+              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+          </Link>
+        </div>
 
-        <button
-          className="bg-forest flex h-11 w-11 flex-none items-center justify-center border-0 text-white min-[900px]:hidden"
-          onClick={() => setOpen(!open)}
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          aria-expanded={open}
-        >
-          <HugeiconsIcon icon={open ? Cancel01Icon : Menu01Icon} size={22} />
-        </button>
+        <div className="flex flex-none items-center gap-2 min-[900px]:hidden">
+          <a
+            href={whatsapp.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Chat on WhatsApp"
+            className="border-line flex h-11 w-11 items-center justify-center border bg-white"
+          >
+            <Image src="/whatsapp.png" alt="" width={26} height={26} className="h-[26px] w-[26px]" />
+          </a>
+          <button
+            className="bg-forest flex h-11 w-11 flex-none items-center justify-center border-0 text-white"
+            onClick={() => setOpen(!open)}
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+          >
+            <HugeiconsIcon icon={open ? Cancel01Icon : Menu01Icon} size={22} />
+          </button>
+        </div>
       </div>
 
       {open && (
@@ -378,6 +407,33 @@ export function Header() {
 }
 
 const footerBusiness = ['Business Enquiry', 'Distribution', 'Dealership']
+
+/** Floating WhatsApp chat button, fixed bottom-right on every page. */
+export function WhatsAppFloat() {
+  return (
+    <a
+      href={whatsapp.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Chat on WhatsApp ${whatsapp.display}`}
+      className="group fixed right-4 bottom-4 z-40 flex items-center gap-3 sm:right-6 sm:bottom-6"
+    >
+      <span className="bg-charcoal pointer-events-none hidden translate-x-2 px-4 py-2.5 text-[12px] font-bold tracking-[.08em] whitespace-nowrap text-white uppercase opacity-0 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 sm:block">
+        Chat on WhatsApp
+      </span>
+      <span className="relative flex h-[58px] w-[58px] items-center justify-center sm:h-16 sm:w-16">
+        <span className="absolute inset-1 animate-ping rounded-full bg-[#25D366] opacity-30" />
+        <Image
+          src="/whatsapp.png"
+          alt=""
+          width={64}
+          height={64}
+          className="relative h-full w-full drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)] transition-transform duration-300 group-hover:scale-110"
+        />
+      </span>
+    </a>
+  )
+}
 
 export function Footer() {
   return (
