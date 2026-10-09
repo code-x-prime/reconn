@@ -24,6 +24,16 @@ const aboutParagraphs = [
   'We are dedicated to creating pure, natural, and health-oriented products that inspire everyday wellness, while staying true to authenticity, sustainability, and transparency.',
 ]
 
+const certifications = [
+  { file: 'iso-9001', alt: 'ISO 9001:2015', w: 150, h: 196 },
+  { file: 'iso-22000', alt: 'ISO 22000:2018', w: 160, h: 196 },
+  { file: 'fssai', alt: 'FSSAI', w: 205, h: 196 },
+  { file: 'fda', alt: 'FDA', w: 208, h: 196 },
+  { file: 'gmp', alt: 'GMP Certified - Good Manufacturing Practice', w: 191, h: 196 },
+  { file: 'international-accurate', alt: 'International Accurate Certified', w: 189, h: 196 },
+  { file: 'haccp', alt: 'HACCP Certified', w: 186, h: 196 },
+]
+
 const aboutLabels = ['Quality Focus', 'Consistent Approach', 'Multiple Product Categories']
 
 const manufacturingSteps = [
@@ -103,25 +113,29 @@ export default function Home() {
         </section>
 
         {/* CERTIFICATIONS */}
-        <section className="bg-white px-5 py-8 sm:px-[7vw] sm:py-12">
+        <section className="bg-white px-5 pt-8 pb-2 sm:px-[7vw] sm:pt-12 sm:pb-4">
           <Reveal className="mx-auto max-w-[1400px]">
-            <p className="text-forest m-0 mb-6 text-center text-[12px] font-bold tracking-[.18em] uppercase sm:mb-8">
+            <p className="text-forest m-0 mb-5 text-center text-[11px] font-bold tracking-[.18em] uppercase sm:mb-8 sm:text-[12px]">
               Certifications &amp; standards
             </p>
-            <div className="-mx-5 overflow-x-auto px-5 sm:mx-0 sm:overflow-visible sm:px-0">
-              <Image
-                src="/images/reconn/certifications.png"
-                alt="ISO 9001:2015, ISO 22000:2018, FSSAI, FDA, GMP, International Accurate Certified and HACCP certification marks"
-                width={1497}
-                height={196}
-                className="mx-auto h-auto w-[760px] max-w-none sm:w-full sm:max-w-[1050px]"
-              />
-            </div>
+            <ul className="m-0 flex list-none flex-wrap items-center justify-center gap-x-6 gap-y-5 p-0 sm:gap-x-10 lg:gap-x-14">
+              {certifications.map((c) => (
+                <li key={c.file} className="flex items-center">
+                  <Image
+                    src={`/images/reconn/certifications/${c.file}.png`}
+                    alt={c.alt}
+                    width={c.w}
+                    height={c.h}
+                    className="h-14 w-auto sm:h-[84px] lg:h-24"
+                  />
+                </li>
+              ))}
+            </ul>
           </Reveal>
         </section>
 
         {/* 02 ABOUT RECONN */}
-        <section className="mx-auto grid min-h-[calc(100svh-71px)] max-w-[1400px] grid-cols-1 content-center items-center gap-12 px-5 py-14 sm:min-h-[calc(100svh-87px)] sm:px-[7vw] sm:py-28 lg:grid-cols-[1.1fr_1fr] lg:gap-[6vw] lg:py-[140px]">
+        <section className="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-8 px-5 py-10 sm:gap-12 sm:px-[7vw] sm:py-14 lg:grid-cols-[1.1fr_1fr] lg:gap-[6vw] lg:py-16">
           <ImageReveal
             src={aboutImage}
             alt="A mother and daughter at a sunlit kitchen table with Reconn ghee, honey and mustard oil, farm fields outside the window"
