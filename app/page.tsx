@@ -103,7 +103,7 @@ export default function Home() {
         </section>
 
         {/* CERTIFICATIONS */}
-        <section className="bg-white px-5 py-10 sm:px-[7vw] sm:py-14">
+        <section className="bg-white px-5 py-8 sm:px-[7vw] sm:py-12">
           <Reveal className="mx-auto max-w-[1400px]">
             <p className="text-forest m-0 mb-6 text-center text-[12px] font-bold tracking-[.18em] uppercase sm:mb-8">
               Certifications &amp; standards
@@ -112,8 +112,8 @@ export default function Home() {
               <Image
                 src="/images/reconn/certifications.png"
                 alt="ISO 9001:2015, ISO 22000:2018, FSSAI, FDA, GMP, International Accurate Certified and HACCP certification marks"
-                width={1050}
-                height={121}
+                width={1497}
+                height={196}
                 className="mx-auto h-auto w-[760px] max-w-none sm:w-full sm:max-w-[1050px]"
               />
             </div>
